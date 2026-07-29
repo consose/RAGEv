@@ -130,12 +130,23 @@ See `data/README.md` for detailed format description.
 - **ROUGE** (1, 2, L, Lsum): Lexical overlap with reference answers
 - **BERTScore** (Precision, Recall, F1): Semantic similarity using contextual embeddings
 
+### Retrieval-specific evaluation (VHT, AMR collections)
+- **Precision@k**: Fraction of retrieved chunks from the correct source document
+- **Recall@k** (Hit_score@k): Whether at least one relevant chunk is retrieved
+- **MRR@k**: Mean Reciprocal Rank of the first relevant chunk
+- **nDCG@k**: Normalized Discounted Cumulative Gain capturing ranking quality
+
 ### Classification evaluation (PubMedQA)
 - **Accuracy, Precision, Recall, F1-score**: Standard classification metrics for binary (yes/no) answers
 
 ### Configuration analysis
 - **SHAP Waterfall**: Marginal contribution of each configuration parameter
 - **Independent t-tests**: Statistical significance of parameter effects (α = 0.001)
+- **Factorial ANOVA**: Main effects and interaction terms across all configuration dimensions
+
+### Computational cost analysis
+- **End-to-end latency**: Median response time per query by pipeline and generation model
+- **Token consumption**: Prompt token count (context size) per configuration
 
 ## Citation
 
@@ -153,4 +164,3 @@ If you use this code or the RAGEv-Bench datasets, please cite:
 ## License
 
 This project is licensed under the EUPL-1.2. See [LICENSE](LICENSE) for details.
-# RAGEv
