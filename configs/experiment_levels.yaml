@@ -1,0 +1,61 @@
+# RAGEv Experimental Design Configuration
+#
+# This file specifies the full factorial design used in the paper.
+# Each factor lists its possible levels.
+
+factors:
+  chunk_strategy:
+    description: "Document corpus / collection"
+    levels:
+      - amalia    # VHT (Virtual Human Twin) collection
+      - phages    # AMR (Anti-Microbial Resistance) collection
+
+  pipeline:
+    description: "Retrieval pipeline architecture"
+    levels:
+      - txt       # Full-Text Search
+      - vctr      # Vector (Semantic) Search
+      - hbrd      # Hybrid Search (lexical + semantic)
+      - clbrt     # ColBERTv2 (late interaction)
+      - udapr     # UDAPDR (unsupervised domain-adapted)
+
+  embedding_model:
+    description: "Embedding model for vector representations"
+    levels:
+      - ada2      # OpenAI text-embedding-ada-002
+
+  generation_model:
+    description: "LLM used for answer generation"
+    levels:
+      - gpt4      # GPT-4 32k (Azure OpenAI)
+      - llama3    # LLaMA-3.3-70B-Instruct
+      - nous      # Mistral-Small-3-24B (MoE)
+
+  n_chunks:
+    description: "Number of retrieved chunks passed to generation"
+    levels:
+      - 3
+      - 10
+
+  relevance_threshold:
+    description: "Minimum relevance score for chunk inclusion (0=none, 5=0.5)"
+    levels:
+      - 0         # No threshold (all retrieved chunks used)
+      - 5         # Threshold = 0.5 (low-confidence chunks filtered)
+
+  reranker:
+    description: "Post-retrieval reranking strategy"
+    levels:
+      - n         # No reranking
+      - y         # Cohere Rerank English v3.0
+      - r         # Query Rewrite strategy
+
+# Total configurations: 2 × 5 × 1 × 3 × 2 × 2 × 3 = 360 per corpus
+# Across both corpora: 720 total experiments
+
+prompt_template: "{question} Answer providing an explanation."
+
+inference_parameters:
+  temperature: 0
+  response_mode: blocking
+  max_output_tokens: null  # Platform default (no explicit limit)
