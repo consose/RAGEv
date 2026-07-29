@@ -39,7 +39,7 @@ The evaluation framework implements a full factorial design across the following
 | **Chunk Length** | 100 tokens, 500 tokens |
 | **Pipeline** | Vector Search, Full-Text Search, Hybrid Search, ColBERTv2, UDAPDR |
 | **Embedding Model** | ADA2 (text-embedding-ada-002), SFR-Embedding-Mistral |
-| **Generation Model** | GPT-4 32k, LLaMA-3.3-70B-Instruct, Nous-Hermes-2-Mixtral-8x7B-DPO |
+| **Generation Model** | GPT-4.5, LLaMA-3.3-70B-Instruct, Nous-Hermes-2-Mixtral-8x7B-DPO |
 | **Number of Retrieved Chunks** | 3, 10 |
 | **Relevancy Score Threshold** | 0.0 (no filter), 0.5 |
 | **Reranker** | None, Cohere (rerank-english-v3.0), Rewrite |
@@ -66,7 +66,7 @@ Where `{question}` is substituted with each evaluation question from the dataset
 
 | Model ID | Architecture | Provider |
 |----------|-------------|----------|
-| `gpt432k` | GPT-4 32k | Azure OpenAI |
+| `gpt432k` | GPT-4.5 | Azure OpenAI |
 | `llama-3.3-70b-instruct` | LLaMA-3.3-70B-Instruct | GPT@JRC |
 | `nous-hermes-2-mixtral-8x7b-dpo` | Nous-Hermes-2-Mixtral-8x7B-DPO (MoE) | GPT@JRC |
 
